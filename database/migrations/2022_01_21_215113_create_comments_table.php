@@ -15,9 +15,9 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('image_id');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('image_id');
             $table->text('comment');
             $table->dateTime('created_at', $precision = 0);
             $table->dateTime('updated_at', $precision = 0);
