@@ -18,9 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role',
         'name',
+        'surname',
         'email',
+        'email_verified_at',
         'password',
+        'image',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -40,5 +46,13 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
+
+
+    public function images()
+    {
+        return $this->hasMany(Images::class);
+    }
 }
