@@ -13,6 +13,6 @@ class Like extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
     public function image(){
-        return $this->belongsTo(Images::class, 'image_id');
+        return $this->belongsTo(Image::class, 'image_id');
     }
 }

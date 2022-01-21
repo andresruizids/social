@@ -12,12 +12,14 @@ class Image extends Model
     protected $table = 'images';
     public function comments()
     {
-        return $this->hasMany(Comments::class, 'image_id');
+        return $this->hasMany(Comment::class, 'image_id');
     }
-    public function likes(){
-        return $this->hasMany(Likes::class, 'image_id');
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'image_id');
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 }
