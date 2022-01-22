@@ -74,7 +74,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         User::findOrFail($id)->update($request->all());
-        return redirect()->route('user.show', $id);
+        return redirect()->back()->with('message', 'Se actualizón con exito la información');
     }
 
     /**
