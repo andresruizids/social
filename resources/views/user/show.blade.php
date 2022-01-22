@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
 
-    <form method="POST" action="{{ route('user.update', Auth::user()->id) }}">
+    <form method="POST" enctype="multipart/form-data" action="{{ route('user.update', Auth::user()->id) }}">
         @method('PUT')
         @csrf
 
@@ -24,50 +24,63 @@
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                        <form method="POST" action="">
-                            @csrf
+                        @csrf
 
-                            <!-- Name -->
-                            <div class="mt-4">
-                                <x-label for="name" :value="__('Name')" />
+                        <!-- Name -->
+                        <div class="mt-4">
+                            <x-label for="name" :value="__('Name')" />
 
-                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="Auth::user()->name" required autofocus />
-                            </div>
-                            <!-- Surname -->
-                            <div class="mt-4">
-                                <x-label for="surname" :value="__('Surname')" />
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="Auth::user()->name" required autofocus />
+                        </div>
+                        <!-- Surname -->
+                        <div class="mt-4">
+                            <x-label for="surname" :value="__('Surname')" />
 
-                                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="Auth::user()->surname" required />
-                            </div>
-                            <!-- nickname -->
-                            <div class="mt-4">
-                                <x-label for="nickname" :value="__('Nickname')" />
+                            <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="Auth::user()->surname" required />
+                        </div>
+                        <!-- nickname -->
+                        <div class="mt-4">
+                            <x-label for="nickname" :value="__('Nickname')" />
 
-                                <x-input id="nickname" class="block mt-1 w-full" type="text" name="nickname" :value="Auth::user()->nickname" required />
-                            </div>
+                            <x-input id="nickname" class="block mt-1 w-full" type="text" name="nickname" :value="Auth::user()->nickname" required />
+                        </div>
 
-                            <!-- Email Address -->
-                            <div class="mt-4">
-                                <x-label for="email" :value="__('Email')" />
+                        <!-- Email Address -->
+                        <div class="mt-4">
+                            <x-label for="email" :value="__('Email')" />
 
-                                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="Auth::user()->email" required />
-                            </div>
+                            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="Auth::user()->email" required />
+                        </div>
 
-                             <!-- User Image -->
-                             <div class="mt-4">
-                                <x-label for="image" :value="__('Avatar')" />
+                        <!-- User Image -->
 
-                                <x-input id="image" class="block mt-1 p-2 w-full" type="file" name="image"  required />
-                            </div>
+                        <div class="mt-4">
+                            @if(Auth::user()->image)
+                            <img class="avatar" src="{{route('user.avatar', Auth::user()->image)}}" alt="">
+
+                            @endif
+                        </div>
 
 
-                            <div class="flex items-center justify-end mt-4">
+                        <div class="mt-4">
 
-                                <x-button class="ml-4">
-                                    {{ __('Guardar') }}
-                                </x-button>
-                            </div>
-                        </form>
+
+
+
+
+                            <x-label for="image" :value="__('Avatar')" />
+
+                            <x-input id="image" class="block mt-1 p-2 w-full" type="file" name="image" />
+                        </div>
+
+
+                        <div class="flex items-center justify-end mt-4">
+
+                            <x-button class="ml-4">
+                                {{ __('Guardar') }}
+                            </x-button>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 class UserController extends Controller
 {
@@ -73,7 +78,15 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, $id)
     {
+
         User::findOrFail($id)->update($request->all());
+        if ($request->file('image')) {
+
+            $path = 'user_' . Auth::user()->id . 'cod' . time() . $request->file('image')->getClientOriginalName();
+            Storage::disk('users')->put($path, File::get($request->file('image')));
+            User::findOrFail($id)->update(['image' => $path]);
+        }
+
         return redirect()->back()->with('message', 'Se actualizón con exito la información');
     }
 
@@ -86,5 +99,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getImage($filename)
+    {
+        $file = Storage::disk('users')->get($filename);
+        return new Response($file, 200);
     }
 }
