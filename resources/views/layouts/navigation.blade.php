@@ -18,11 +18,7 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('images')" :active="request()->routeIs('images')">
-                        {{ __('Images') }}
-                    </x-nav-link>
-                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -45,26 +41,12 @@
 
 
                         <!-- Perfil -->
-                        <form method="POST" action="{{ route('perfil') }}">
-                            @csrf
 
-                            <x-dropdown-link :href="route('perfil')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('My Perfil') }}
-                            </x-dropdown-link>
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{route('perfil')}}">My Perfil</a>
 
-                        </form>
                         <!-- Configuration -->
-                        <form method="POST" action="{{ route('user.config') }}">
-                            @csrf
 
-                            <x-dropdown-link :href="route('user.config')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Config') }}
-                            </x-dropdown-link>
-
-                        </form>
-
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{route('user.show', Auth::user()->id)}}">Config</a>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -107,11 +89,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('images')" :active="request()->routeIs('images')">
-                {{ __('Images') }}
-            </x-responsive-nav-link>
-        </div>
+
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
@@ -131,17 +109,16 @@
                     </x-responsive-nav-link>
                     x
                 </form>
-                <!-- Config -->
+                <!-- Perfil -->
+
+                <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{route('perfil')}}">My Perfil</a>
+
+                <!-- Configuration -->
+
+                <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{route('user.show', Auth::user()->id)}}">Config</a>
 
 
-                <form method="POST" action="{{ route('user.config') }}">
-                    @csrf
-                    <x-responsive-nav-link :href="route('user.config')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Config') }}
-                    </x-responsive-nav-link>
-                    x
-                </form>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

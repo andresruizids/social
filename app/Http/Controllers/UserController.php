@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -47,7 +49,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.show');
     }
 
     /**
@@ -70,7 +72,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::findOrFail($id)->update($request->all());
+
+
     }
 
     /**
@@ -82,12 +86,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-
-    public function config()
-    {
-        return view('user.config');
     }
 }

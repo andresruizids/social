@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('index');
+})->name('index')->middleware(['auth']);
 
 
 
@@ -57,4 +57,4 @@ Route::get('/images', function () {
 Route::resources([
     'user' => UserController::class,
 ]);
-Route::post('user/config', [UserController::class, 'config'])->name('user.config');
+//Route::post('user/config', [UserController::class, 'config'])->name('user.config');
