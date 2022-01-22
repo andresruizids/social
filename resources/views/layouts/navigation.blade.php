@@ -11,9 +11,16 @@
                 </div>
 
                 <!-- Navigation Links -->
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('images')" :active="request()->routeIs('images')">
+                        {{ __('Images') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -34,16 +41,48 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+
+
+                        <!-- Perfil -->
+                        <form method="POST" action="{{ route('perfil') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('perfil')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('My Perfil') }}
+                            </x-dropdown-link>
+
+                        </form>
+                        <!-- Configuration -->
+                        <form method="POST" action="{{ route('config') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('config')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Config') }}
+                            </x-dropdown-link>
+
+                        </form>
+
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+
                         </form>
+
+
+
+
+
+
                     </x-slot>
                 </x-dropdown>
             </div>
@@ -62,12 +101,17 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('images')" :active="request()->routeIs('images')">
+                {{ __('Images') }}
+            </x-responsive-nav-link>
+        </div>
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
@@ -76,15 +120,39 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <!-- Perfil -->
+
+
+                <form method="POST" action="{{ route('perfil') }}">
+                    @csrf
+                    <x-responsive-nav-link :href="route('perfil')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('My Perfil') }}
+                    </x-responsive-nav-link>
+                    x
+                </form>
+                <!-- Config -->
+
+
+                <form method="POST" action="{{ route('config') }}">
+                    @csrf
+                    <x-responsive-nav-link :href="route('config')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Config') }}
+                    </x-responsive-nav-link>
+                    x
+                </form>
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('config') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+
+
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
+                    x
                 </form>
             </div>
         </div>

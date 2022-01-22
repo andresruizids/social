@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 
 
 
-Route::get('test', function(){
+Route::get('test', function () {
     $images = Image::all();
 
     return view('test')->with('images', $images);
@@ -33,4 +33,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+
+
+Route::post('/perfil', function () {
+    return view('notYet');
+})->middleware(['auth'])->name('perfil');
+
+Route::post('/config', function () {
+    return view('notYet');
+})->middleware(['auth'])->name('config');
+
+
+Route::get('/images', function () {
+    return view('notYet');
+})->middleware(['auth'])->name('images');
