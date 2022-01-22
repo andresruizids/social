@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -80,5 +82,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public function config()
+    {
+        return view('user.config');
     }
 }

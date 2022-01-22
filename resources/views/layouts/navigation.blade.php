@@ -55,10 +55,10 @@
 
                         </form>
                         <!-- Configuration -->
-                        <form method="POST" action="{{ route('config') }}">
+                        <form method="POST" action="{{ route('user.config') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('config')" onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('user.config')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Config') }}
                             </x-dropdown-link>
@@ -134,16 +134,16 @@
                 <!-- Config -->
 
 
-                <form method="POST" action="{{ route('config') }}">
+                <form method="POST" action="{{ route('user.config') }}">
                     @csrf
-                    <x-responsive-nav-link :href="route('config')" onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('user.config')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Config') }}
                     </x-responsive-nav-link>
                     x
                 </form>
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('config') }}">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
 

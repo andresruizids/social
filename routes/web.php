@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
@@ -41,11 +42,19 @@ Route::post('/perfil', function () {
     return view('notYet');
 })->middleware(['auth'])->name('perfil');
 
-Route::post('/config', function () {
-    return view('notYet');
-})->middleware(['auth'])->name('config');
+
+
+
+
+
 
 
 Route::get('/images', function () {
     return view('notYet');
 })->middleware(['auth'])->name('images');
+
+
+Route::resources([
+    'user' => UserController::class,
+]);
+Route::post('user/config', [UserController::class, 'config'])->name('user.config');
