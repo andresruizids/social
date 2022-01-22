@@ -53,6 +53,13 @@
                                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="Auth::user()->email" required />
                             </div>
 
+                             <!-- User Image -->
+                             <div class="mt-4">
+                                <x-label for="image" :value="__('Avatar')" />
+
+                                <x-input id="image" class="block mt-1 p-2 w-full" type="file" name="image"  required />
+                            </div>
+
 
                             <div class="flex items-center justify-end mt-4">
 
