@@ -21,6 +21,7 @@ class User extends Authenticatable
         'role',
         'name',
         'surname',
+        'nickname',
         'email',
         'email_verified_at',
         'password',
@@ -50,6 +51,9 @@ class User extends Authenticatable
         'updated_at' => 'datetime',
     ];
 
+    protected $attributes = [
+        'role' => 'regular',
+    ];
 
     public function images()
     {
