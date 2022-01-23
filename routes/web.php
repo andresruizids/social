@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/', function () {
     $images = Image::all();
 
-    return view('welcome')->with('images', $images);
+    return view('dashboard')->with('images', $images);
 })->name('index')->middleware(['auth']);
 
 

@@ -3,13 +3,13 @@ form .avatar {
 }
 .container-avatar {
     display: inline-block;
-   width: 35px;
+   width: 45px;
 
 }
 
 .container-avatar img {
     border-radius: 900px;
-    height: 35px;
+    height: 45px;
 }
 
 .header-options{

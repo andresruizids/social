@@ -88,7 +88,7 @@ class UserController extends Controller
         if ($request->file('image')) {
 
             $path = 'user_' . Auth::user()->id . 'cod' . time() . $request->file('image')->getClientOriginalName();
-            Storage::disk('users')->put($path, File::get($request->file('image')));
+            Storage::disk('avatar')->put($path, File::get($request->file('image')));
             User::findOrFail($id)->update(['image' => $path]);
         }
 
@@ -109,7 +109,7 @@ class UserController extends Controller
     public function getImage($filename)
     {
 
-        $file = Storage::disk('users')->get($filename);
+        $file = Storage::disk('avatar')->get($filename);
         return new Response($file, 200);
     }
 }

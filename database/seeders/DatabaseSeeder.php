@@ -35,12 +35,35 @@ class DatabaseSeeder extends Seeder
         $id_comments = [];
 
         for ($i = 0; $i < 10; $i++) {
-            $user = User::factory()->create();
+
+
+
+            $nameAvatar = rand(11, 14) . '.jpg';
+
+            $fileSeeder = Storage::disk('seeder')->get($nameAvatar);
+
+            $path = 'user_cod' . time() . $nameAvatar;
+            Storage::disk('avatar')->put($path, $fileSeeder);
+
+
+            $user = User::factory()->create([
+                'image'=>$path,
+            ]);
 
             array_push($id_users, $user->id);
 
 
             $numImages = rand(0, 5);
+            //cargar avatar para usuario
+
+
+
+
+
+
+
+
+
 
 
             for ($i_images = 0; $i_images < $numImages; $i_images++) {
@@ -56,8 +79,6 @@ class DatabaseSeeder extends Seeder
                         'image_path' => $path,
                     ]);
                 array_push($id_images, $image->id);
-                /*
-             */
             }
         }
 
