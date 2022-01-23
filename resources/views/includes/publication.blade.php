@@ -14,15 +14,19 @@
                         </div>
                     </div>
 
-                    <img src="{{route('image.item',['filename'=>$image->image_path])}}" alt="">
+
+                        <img class="image-publication" src="{{route('image.item',['filename'=>$image->image_path])}}" alt="">
 
 
-                    <strong>likes:</strong>{{count($image->likes)}}
-                    (
-                    @foreach($image->likes as $like)
-                    {{$like->user->name}},
-                    @endforeach
-                    ) <br>
+                    <div class="likes">
+                        <img class="inline-block " src="{{asset('/img/unlike.png')}}" alt="">
+                        {{count($image->likes)}}
+                        (
+                        @foreach($image->likes as $like)
+                        {{$like->user->name}},
+                        @endforeach
+                        )
+                    </div> <br>
 
                     <strong>comments</strong>: <br>
                     <ul>

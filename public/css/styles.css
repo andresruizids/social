@@ -34,4 +34,19 @@ form .avatar {
     display: inline-block;
 }
 
+.image-publication{
+    margin: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.likes img{
+    width: 30px;
+
+}
+
+
+.likes{
+    padding-top: 4px;
+}
 
