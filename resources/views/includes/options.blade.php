@@ -1,3 +1,3 @@
 <div class="options">
-    <a href=""> Add Image</a>
+    <a href="{{route('image.create')}}"> Add Image</a>
 </div>
