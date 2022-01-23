@@ -16,16 +16,19 @@
 
 
                     <img class="image-publication" src="{{route('image.item',['filename'=>$image->image_path])}}" alt="">
+                  <p class="mt-2 mb-1">  {{$image->description}}</p><hr>
 
 
                     <div class="likes">
+
+
+
+
+
+
                         <img class="inline-block " src="{{asset('/img/unlike.png')}}" alt="">
                         {{count($image->likes)}}
-                        (
-                        @foreach($image->likes as $like)
-                        {{$like->user->name}},
-                        @endforeach
-                        )
+
                         <div class="comments">
                             @if($image->comments->count()>0)
                             <a href=""> Ver los {{$image->comments->count()}} comentarios</a>
