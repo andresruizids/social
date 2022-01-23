@@ -7,9 +7,9 @@
         @include('includes.options')
     </x-slot>
 
-    <div class="py-12">
 
-        @include('includes.publication', $images)
 
-    </div>
+    @include('includes.publication', $images)
+
+
 </x-app-layout>
