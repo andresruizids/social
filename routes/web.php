@@ -57,4 +57,4 @@ Route::get('/images', function () {
 Route::resources([
     'user' => UserController::class,
 ]);
-Route::get('user/avatar/{filename}', [UserController::class, 'getImage'])->middleware(['auth'])->name('user.avatar');
+Route::get('user/avatar/{filename}', [UserController::class, 'getImage'])->name('user.avatar');
