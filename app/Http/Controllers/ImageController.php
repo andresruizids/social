@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
@@ -21,7 +22,10 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::where('user_id', Auth::user()->id)->get();
+
+
+        return view('image.index')->with('images', $images);
     }
 
     /**

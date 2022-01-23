@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $images = Image::all();
+
+    return view('welcome')->with('images', $images);
+
 })->name('index')->middleware(['auth']);
 
 
@@ -32,7 +35,10 @@ Route::get('test', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $images = Image::all();
+
+    return view('dashboard')->with('images', $images);
+
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

@@ -11,3 +11,15 @@ form .avatar {
     border-radius: 900px;
     height: 35px;
 }
+
+.header-optiones{
+    display: inline;
+    width: 50%;
+}
+
+.options{
+    display: inline;
+    width: auto;
+    float: right;
+    text-align: right;
+}

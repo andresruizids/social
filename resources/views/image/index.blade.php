@@ -1,8 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+    <x-slot name="header" >
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight header-optiones">
+            {{ __('Images') }}
+
         </h2>
+        @include('includes.options')
     </x-slot>
 
     <div class="py-12">
