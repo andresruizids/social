@@ -15,7 +15,7 @@
                     </div>
 
 
-                        <img class="image-publication" src="{{route('image.item',['filename'=>$image->image_path])}}" alt="">
+                    <img class="image-publication" src="{{route('image.item',['filename'=>$image->image_path])}}" alt="">
 
 
                     <div class="likes">
@@ -26,10 +26,15 @@
                         {{$like->user->name}},
                         @endforeach
                         )
-                    </div> <br>
+                        <div class="comments">
+                            @if($image->comments->count()>0)
+                            <a href=""> Ver los {{$image->comments->count()}} comentarios</a>
+                            @endif
+                        </div>
+                    </div>
 
-                    <strong>comments</strong>: <br>
-                    <ul>
+
+                    <!-- <ul>
                         @foreach($image->comments as $comment)
                         <li>
                             <div class="comment shadow-sm shadow-grey-500/50 p-10 rounded mt-1 ">
@@ -40,7 +45,7 @@
                         </li>
                         <br>
                         @endforeach
-                    </ul>
+                    </ul> -->
 
 
                 </div>

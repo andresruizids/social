@@ -49,3 +49,8 @@ form .avatar {
 .likes{
     padding-top: 4px;
 }
+
+
+.comments{
+float: right;
+}
