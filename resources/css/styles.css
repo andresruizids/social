@@ -23,3 +23,17 @@ form .avatar {
     float: right;
     text-align: right;
 }
+
+.container-publication{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.nickname-publication{
+    display: inline-block;
+}
+
+.comment ul li{
+
+}
