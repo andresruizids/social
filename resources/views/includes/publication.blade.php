@@ -6,7 +6,7 @@
                 <div class="publication">
                     <div class="container-publication">
                         <div class="container-avatar mr-1">
-                            @include('includes.avatar')
+                        <img class="avatar" src="{{route('user.avatar', $image->user->image)}}" alt="">
 
                         </div>
                         <div class="nickname-publication">
