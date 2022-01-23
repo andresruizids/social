@@ -46,3 +46,4 @@
 </div>
 
 @endforeach
+@include('includes.pagination', $images)

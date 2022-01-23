@@ -26,7 +26,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::where('user_id', Auth::user()->id)->get();
+        $images = Image::where('user_id', Auth::user()->id)->cursorPaginate(5);;
 
 
 

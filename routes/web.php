@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', function () {
-    $images = Image::all();
+    $images = Image::where('id','>',0)->cursorPaginate(5);
 
     return view('dashboard')->with('images', $images);
 })->name('index')->middleware(['auth']);
@@ -38,7 +38,7 @@ echo 'test';
 
 
 Route::get('/dashboard', function () {
-    $images = Image::all();
+    $images = Image::where('id','>',0)->cursorPaginate(5);
 
     return view('dashboard')->with('images', $images);
 })->middleware(['auth'])->name('dashboard');
