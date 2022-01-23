@@ -55,5 +55,6 @@ Route::resources([
     'image' => ImageController::class,
 ]);
 Route::get('user/avatar/{filename}', [UserController::class, 'getImage'])->name('user.avatar');
+Route::get('image/item/{filename}', [ImageController::class, 'getImage'])->name('image.item');
 
 

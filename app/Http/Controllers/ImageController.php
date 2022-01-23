@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreImageRequest;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -23,6 +27,7 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::where('user_id', Auth::user()->id)->get();
+
 
 
         return view('image.index')->with('images', $images);
@@ -44,9 +49,24 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreImageRequest $request)
     {
-        //
+        $description = $request->input('description');
+
+
+
+
+
+        $image_path = 'user_' . Auth::user()->id . 'cod' . time() . $request->file('image')->getClientOriginalName();
+        Storage::disk('images')->put($image_path, File::get($request->file('image')));
+
+        Image::create([
+            'user_id' => Auth::user()->id,
+            'image_path' => $image_path,
+            'description' => $description,
+        ]);
+
+        return redirect()->route('image.index')->with('message', 'Se agregó con exito la imagen');
     }
 
     /**
@@ -92,5 +112,12 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         //
+    }
+
+    public function getImage($filename)
+    {
+
+        $file = Storage::disk('images')->get($filename);
+        return new Response($file, 200);
     }
 }
