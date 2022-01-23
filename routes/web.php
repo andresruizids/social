@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use App\Models\Image;
 use Illuminate\Support\Facades\Route;
@@ -43,18 +44,10 @@ Route::post('/perfil', function () {
 })->middleware(['auth'])->name('perfil');
 
 
-
-
-
-
-
-
-Route::get('/images', function () {
-    return view('notYet');
-})->middleware(['auth'])->name('images');
-
-
 Route::resources([
     'user' => UserController::class,
+    'image' => ImageController::class,
 ]);
 Route::get('user/avatar/{filename}', [UserController::class, 'getImage'])->name('user.avatar');
+
+

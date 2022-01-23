@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +31,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('image.create');
     }
 
     /**
