@@ -55,10 +55,7 @@
                         <!-- User Image -->
 
                         <div class="mt-4">
-                            @if(Auth::user()->image)
-                            <img class="avatar" src="{{route('user.avatar', Auth::user()->image)}}" alt="">
-
-                            @endif
+                            @include('includes.avatar')
                         </div>
 
 

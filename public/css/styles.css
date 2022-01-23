@@ -1,5 +1,14 @@
-.avatar {
+form .avatar {
     width: 20%;
+}
+.container-avatar {
+    display: inline-block;
+   width: 35px;
 
+}
+
+.container-avatar img {
+    border-radius: 900px;
+    height: 35px;
 }
 
