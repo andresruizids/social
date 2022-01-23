@@ -3,7 +3,9 @@
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use App\Models\Image;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,16 +22,17 @@ Route::get('/', function () {
     $images = Image::all();
 
     return view('welcome')->with('images', $images);
-
 })->name('index')->middleware(['auth']);
 
 
 
 
 Route::get('test', function () {
-    $images = Image::all();
 
-    return view('test')->with('images', $images);
+echo 'test';
+
+    /*$path = 'user_' . $user()->id . 'cod' . time() . $nameFile;
+    Storage::disk('images')->put($path, File::get($fileSeeder));*/
 });
 
 
@@ -38,7 +41,6 @@ Route::get('/dashboard', function () {
     $images = Image::all();
 
     return view('dashboard')->with('images', $images);
-
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
@@ -56,5 +58,3 @@ Route::resources([
 ]);
 Route::get('user/avatar/{filename}', [UserController::class, 'getImage'])->name('user.avatar');
 Route::get('image/item/{filename}', [ImageController::class, 'getImage'])->name('image.item');
-
-

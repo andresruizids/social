@@ -7,6 +7,8 @@ use App\Models\Image;
 use App\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -42,9 +44,16 @@ class DatabaseSeeder extends Seeder
 
 
             for ($i_images = 0; $i_images < $numImages; $i_images++) {
+                $nameFile = rand(1, 10) . '.jpg';
+                $fileSeeder = Storage::disk('seeder')->get($nameFile);
+
+                $path = 'user_' . $user->id . 'cod' . time() . $nameFile;
+                Storage::disk('images')->put($path, $fileSeeder);
+
                 $image = Image::factory()
                     ->create([
                         'user_id' => $user,
+                        'image_path' => $path,
                     ]);
                 array_push($id_images, $image->id);
                 /*
